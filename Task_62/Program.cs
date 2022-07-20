@@ -11,20 +11,27 @@
 
 10 9 8 7
  */
-int n = 4, m = 4, max = 10;
-
-int[,] GetArray(int n, int m, int max)
+int n = 4;
+int[,] sqareMatrix = new int[n, n];
+int i = 0;
+int j = 0;
+int temp = 1;
+int[,] GetArray()
 {
-    int[,] Array = new int[n, m];
-    var rnd = new Random();
-    for (int i = 0; i < Array.GetLength(0); i++)
-    {
-        for (int j = 0; j < Array.GetLength(1); j++)
-        {
-            Array[i, j] = rnd.Next(1, max);
-        }
-    }
-    return Array;
+while (temp <= sqareMatrix.GetLength(0) * sqareMatrix.GetLength(1))
+{
+  sqareMatrix[i, j] = temp;
+  temp++;
+  if (i <= j + 1 && i + j < sqareMatrix.GetLength(1) - 1)
+    j++;
+  else if (i < j && i + j >= sqareMatrix.GetLength(0) - 1)
+    i++;
+  else if (i >= j && i + j > sqareMatrix.GetLength(1) - 1)
+    j--;
+  else
+    i--;
+}
+return sqareMatrix;
 }
 void PrintArray(int[,] Array)
 {
@@ -39,3 +46,5 @@ void PrintArray(int[,] Array)
         Console.WriteLine();
     }
 }
+ int[,] result = GetArray ();
+ PrintArray(result);
